@@ -18,7 +18,6 @@ namespace SCP500Expanded.Handlers
                 new Items.AvatarPill();
                 new Items.ArcanePill();
                 new Items.ArtifactPill();
-                // أكمل بقية الحبات لما نجهزهم
             ;
         }
 
