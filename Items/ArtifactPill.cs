@@ -6,13 +6,14 @@ using Exiled.CustomItems;
 using Exiled.CustomItems.API.Features;
 using Exiled.Events.EventArgs.Player;
 using UnityEngine;
-
+// هذا المشروع محمي من قبل حقوق االطبع والنشر MTI , صانعه الاصلي MOCNEF50G 
+// ويشرف عليه dzarenafixer لذا نرجو عدم مخالفة القواعد واستشر المالك اذا اردت اخذه وشكرا
 namespace SCP500Expanded.Items
 {
     [CustomItem(ItemType.SCP500)]
     public class ArtifactPill : CustomItem
     {
-        public override uint Id { get; set; } = 5010;
+        public override uint Id { get; set; } = 6658;
         public override string Name { get; set; } = "Artifact Pill";
         public override string Description { get; set; } = "Grants a random item.";
         public override float Weight { get; set; } = 0.1f;

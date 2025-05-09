@@ -6,14 +6,15 @@ using Exiled.CustomItems;
 using Exiled.CustomItems.API.Features;
 using Exiled.Events.EventArgs.Player;
 using UnityEngine;
-
+// هذا المشروع محمي من قبل حقوق االطبع والنشر MTI , صانعه الاصلي MOCNEF50G 
+// ويشرف عليه dzarenafixer لذا نرجو عدم مخالفة القواعد واستشر المالك اذا اردت اخذه وشكرا
 namespace SCP500Expanded.Items
 {
     [CustomItem(ItemType.SCP500)]
 
     public class AtomPill : CustomItem
     {
-        public override uint Id { get; set; } = 5005;
+        public override uint Id { get; set; } = 23585;
         public override string Name { get; set; } = "Atom Pill";
         public override string Description { get; set; } = "Shrinks your body size.";
         public override float Weight { get; set; } = 0.1f;

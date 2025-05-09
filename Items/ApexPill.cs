@@ -11,10 +11,11 @@ using Exiled.CustomItems.API.Features;
 namespace SCP500Expanded.Items
 {
     [CustomItem(ItemType.SCP500)]
-
+// هذا المشروع محمي من قبل حقوق االطبع والنشر MTI , صانعه الاصلي MOCNEF50G 
+    // ويشرف عليه dzarenafixer لذا نرجو عدم مخالفة القواعد واستشر المالك اذا اردت اخذه وشكرا
     public class ApexPill : CustomItem
     {
-        public override uint Id { get; set; } = 5002;
+        public override uint Id { get; set; } = 50402;
         public override string Name { get; set; } = "Apex Pill";
         public override string Description { get; set; } = "Grants unlimited sprint for 15 seconds.";
         public override float Weight { get; set; } = 0.1f;

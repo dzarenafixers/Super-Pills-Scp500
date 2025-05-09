@@ -2,24 +2,20 @@ using Exiled.API.Enums;
 using Exiled.API.Features;
 using Exiled.API.Features.Attributes;
 using Exiled.API.Features.Spawn;
-using Exiled.CustomItems;
 using Exiled.CustomItems.API.Features;
 using Exiled.Events.EventArgs.Player;
-using PlayerRoles;
 // هذا المشروع محمي من قبل حقوق االطبع والنشر MTI , صانعه الاصلي MOCNEF50G 
 // ويشرف عليه dzarenafixer لذا نرجو عدم مخالفة القواعد واستشر المالك اذا اردت اخذه وشكرا
 namespace SCP500Expanded.Items
 {
-    [CustomItem (ItemType.SCP500)]
-
-    public class AnomalyPill : CustomItem
+    [CustomItem(ItemType.SCP500)]
+    public class PowerPill : CustomItem
     {
-        public override uint Id { get; set; } = 5004;
-        public override string Name { get; set; } = "Anomaly Pill";
-        public override string Description { get; set; } = "Switches your team to an enemy team while keeping inventory.";
+        public override uint Id { get; set; } = 505050;
+        public override string Name { get; set; } = "Power Pill";
+        public override string Description { get; set; } = "Grants increased speed and damage for 10 seconds, but loses 20% health after.";
         public override float Weight { get; set; } = 0.1f;
         public override SpawnProperties SpawnProperties { get; set; }
-        public override ItemType Type { get; set; } = ItemType.SCP500;
 
         protected override void SubscribeEvents()
         {
@@ -37,16 +33,8 @@ namespace SCP500Expanded.Items
         {
             if (!Check(ev.Item)) return;
 
-            RoleTypeId newRole = ev.Player.Role.Team switch
-            {
-                Team.FoundationForces => RoleTypeId.ChaosConscript,
-                Team.ChaosInsurgency => RoleTypeId.NtfPrivate,
-                Team.Scientists => RoleTypeId.ClassD,
-                Team.ClassD => RoleTypeId.Scientist,
-                _ => ev.Player.Role.Type
-            };
-
-            ev.Player.Role.Set(newRole, RoleSpawnFlags.AssignInventory);
+            ev.Player.EnableEffect(EffectType.Scp207, 10); // زيادة السرعة
+            ev.Player.Health -= ev.Player.MaxHealth * 0.2f; // تقليل الصحة بنسبة 20%
         }
     }
 }

@@ -1,25 +1,22 @@
-using Exiled.API.Enums;
 using Exiled.API.Features;
 using Exiled.API.Features.Attributes;
 using Exiled.API.Features.Spawn;
-using Exiled.CustomItems;
 using Exiled.CustomItems.API.Features;
 using Exiled.Events.EventArgs.Player;
+using MEC;
 using PlayerRoles;
 // هذا المشروع محمي من قبل حقوق االطبع والنشر MTI , صانعه الاصلي MOCNEF50G 
 // ويشرف عليه dzarenafixer لذا نرجو عدم مخالفة القواعد واستشر المالك اذا اردت اخذه وشكرا
 namespace SCP500Expanded.Items
 {
-    [CustomItem (ItemType.SCP500)]
-
-    public class AnomalyPill : CustomItem
+    [CustomItem(ItemType.SCP500)]
+    public class SkibidiPill : CustomItem
     {
-        public override uint Id { get; set; } = 5004;
-        public override string Name { get; set; } = "Anomaly Pill";
-        public override string Description { get; set; } = "Switches your team to an enemy team while keeping inventory.";
+        public override uint Id { get; set; } = 5007;
+        public override string Name { get; set; } = "Morph Pill";
+        public override string Description { get; set; } = "Transforms you into a random SCP for 15 seconds.";
         public override float Weight { get; set; } = 0.1f;
         public override SpawnProperties SpawnProperties { get; set; }
-        public override ItemType Type { get; set; } = ItemType.SCP500;
 
         protected override void SubscribeEvents()
         {
@@ -37,16 +34,14 @@ namespace SCP500Expanded.Items
         {
             if (!Check(ev.Item)) return;
 
-            RoleTypeId newRole = ev.Player.Role.Team switch
-            {
-                Team.FoundationForces => RoleTypeId.ChaosConscript,
-                Team.ChaosInsurgency => RoleTypeId.NtfPrivate,
-                Team.Scientists => RoleTypeId.ClassD,
-                Team.ClassD => RoleTypeId.Scientist,
-                _ => ev.Player.Role.Type
-            };
+            var randomScpRoles = new[] { RoleTypeId.Scp049, RoleTypeId.Scp096, RoleTypeId.Scp939 };
+            var randomRole = randomScpRoles[UnityEngine.Random.Range(0, randomScpRoles.Length)];
 
-            ev.Player.Role.Set(newRole, RoleSpawnFlags.AssignInventory);
+            ev.Player.Role.Set(randomRole); // تحويل اللاعب إلى SCP عشوائي
+            Timing.CallDelayed(15, () =>
+            {
+                ev.Player.Role.Set(RoleTypeId.None); // إعادة اللاعب إلى دوره السابق
+            });
         }
     }
 }

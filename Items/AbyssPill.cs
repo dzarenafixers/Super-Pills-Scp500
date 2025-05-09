@@ -7,7 +7,9 @@ using System.Linq;
 using Exiled.API.Extensions;
 using Exiled.API.Features.Attributes;
 using Exiled.CustomItems.API.Features;
-
+using ItemGlow;
+// هذا المشروع محمي من قبل حقوق االطبع والنشر MTI , صانعه الاصلي MOCNEF50G 
+// ويشرف عليه dzarenafixer لذا نرجو عدم مخالفة القواعد واستشر المالك اذا اردت اخذه وشكرا
 namespace SCP500Expanded.Items
 {
     [CustomItem(ItemType.SCP500)]
@@ -32,7 +34,7 @@ namespace SCP500Expanded.Items
             Exiled.Events.Handlers.Player.UsedItem -= OnUse;
             base.UnsubscribeEvents();
         }
-
+  
         private void OnUse(UsedItemEventArgs ev)
         {
             if (!Check(ev.Item)) return;

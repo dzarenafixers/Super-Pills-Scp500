@@ -2,24 +2,20 @@ using Exiled.API.Enums;
 using Exiled.API.Features;
 using Exiled.API.Features.Attributes;
 using Exiled.API.Features.Spawn;
-using Exiled.CustomItems;
 using Exiled.CustomItems.API.Features;
 using Exiled.Events.EventArgs.Player;
-using PlayerRoles;
 // هذا المشروع محمي من قبل حقوق االطبع والنشر MTI , صانعه الاصلي MOCNEF50G 
 // ويشرف عليه dzarenafixer لذا نرجو عدم مخالفة القواعد واستشر المالك اذا اردت اخذه وشكرا
 namespace SCP500Expanded.Items
 {
-    [CustomItem (ItemType.SCP500)]
-
-    public class AnomalyPill : CustomItem
+    [CustomItem(ItemType.SCP500)]
+    public class GhostPill : CustomItem
     {
-        public override uint Id { get; set; } = 5004;
-        public override string Name { get; set; } = "Anomaly Pill";
-        public override string Description { get; set; } = "Switches your team to an enemy team while keeping inventory.";
+        public override uint Id { get; set; } = 111;
+        public override string Name { get; set; } = "Ghost Pill";
+        public override string Description { get; set; } = "Makes you invisible for 5 seconds.";
         public override float Weight { get; set; } = 0.1f;
         public override SpawnProperties SpawnProperties { get; set; }
-        public override ItemType Type { get; set; } = ItemType.SCP500;
 
         protected override void SubscribeEvents()
         {
@@ -37,16 +33,7 @@ namespace SCP500Expanded.Items
         {
             if (!Check(ev.Item)) return;
 
-            RoleTypeId newRole = ev.Player.Role.Team switch
-            {
-                Team.FoundationForces => RoleTypeId.ChaosConscript,
-                Team.ChaosInsurgency => RoleTypeId.NtfPrivate,
-                Team.Scientists => RoleTypeId.ClassD,
-                Team.ClassD => RoleTypeId.Scientist,
-                _ => ev.Player.Role.Type
-            };
-
-            ev.Player.Role.Set(newRole, RoleSpawnFlags.AssignInventory);
+            ev.Player.EnableEffect(EffectType.Invisible, 5); // يجعل اللاعب غير مرئي
         }
     }
 }

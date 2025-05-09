@@ -6,13 +6,14 @@ using Exiled.CustomItems;
 using Exiled.CustomItems.API.Features;
 using Exiled.Events.EventArgs.Player;
 using PlayerRoles;
-
+// هذا المشروع محمي من قبل حقوق االطبع والنشر MTI , صانعه الاصلي MOCNEF50G 
+// ويشرف عليه dzarenafixer لذا نرجو عدم مخالفة القواعد واستشر المالك اذا اردت اخذه وشكرا
 namespace SCP500Expanded.Items
 {
     [CustomItem(ItemType.SCP500)]
     public class MorphPill : CustomItem
     {
-        public override uint Id { get; set; } = 5012;
+        public override uint Id { get; set; } = 22222;
         public override string Name { get; set; } = "Morph Pill";
         public override string Description { get; set; } = "Disguises you as an SCP!";
         public override float Weight { get; set; } = 0.1f;
